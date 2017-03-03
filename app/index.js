@@ -20,16 +20,16 @@ class Entry extends React.Component {
     render(props) {
   	    return (
     	    <div>
-                <h2>{this.props.title}</h2>
-                <h2>{this.state.time}</h2>
-                {this.props.updating &&
-                    <input 
-                        type="text" 
-                        value={this.state.time}
-                        placeholder="enter time"
-                        onChange={this.updateTime}
-                    />
-                }
+                <h2>{this.props.title}: {!this.props.updating && this.state.time}
+                    {this.props.updating &&
+                        <input 
+                            type="text"
+                            value={this.state.time}
+                            placeholder="enter time"
+                            onChange={this.updateTime}
+                        />
+                    }
+                </h2>
     	    </div>
  	    );
   }
@@ -49,9 +49,42 @@ class EditButton extends React.Component {
                 type="button"
                 value={this.props.updating ? "click when done editing" : "click to start editing"}
                 onClick={this.toggleEditing}
+                className="btn btn-default btn-lg"
             />
         )
     }
+}
+
+class Clock extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {date: new Date()};
+  }
+
+  componentDidMount() {
+    this.timerID = setInterval(
+      () => this.tick(),
+      1000
+    );
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
+  tick() {
+    this.setState({
+      date: new Date()
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <h2>{this.state.date.toLocaleTimeString()}</h2>
+      </div>
+    );
+  }
 }
 
 class Board extends React.Component {
@@ -70,6 +103,7 @@ class Board extends React.Component {
 	render() {
         return (
             <div>
+                <Clock />
                 <Entry updating={this.state.updating} title="Shachris" />
                 <Entry updating={this.state.updating} title="Mincha" />
                 <Entry updating={this.state.updating} title="Maariv" />

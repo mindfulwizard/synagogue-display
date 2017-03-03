@@ -5,7 +5,7 @@ class Entry extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            time: ''
+            time: localStorage.getItem((this.props.title + 'Time')) || ''
         };
         this.updateTime = this.updateTime.bind(this);
     }
@@ -13,6 +13,7 @@ class Entry extends React.Component {
         if(!this.props.updating) {
             return null;
         }
+        localStorage.setItem((this.props.title + 'Time'), e.target.value);
         this.setState({
             time: e.target.value
         });

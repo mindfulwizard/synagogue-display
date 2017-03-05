@@ -1,5 +1,4 @@
 const React = require('react');
-const ReactDOM = require('react-dom');
 
 class EditButton extends React.Component {
     constructor(props) {

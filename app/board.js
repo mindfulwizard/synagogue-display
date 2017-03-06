@@ -31,4 +31,23 @@ class Board extends React.Component {
     }
 }
 
+/*function Board() {
+    let updating = localStorage.getItem('updating') || 'false';
+
+    function toggle() {
+        updating = localStorage.getItem('updating') === 'true' ? 'false' : 'true';
+        localStorage.setItem('updating', updating);
+    }
+
+    return (
+        <div>
+            <Clock />
+            <Entry updating={updating} title="Shachris" />
+            <Entry updating={updating} title="Mincha" />
+            <Entry updating={updating} title="Maariv" />
+            <EditButton updating={updating} handleClick={toggle} />
+        </div> 
+    )
+}*/
+
 module.exports = Board;

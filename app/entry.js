@@ -8,7 +8,7 @@ class Entry extends React.Component {
         };
         this.updateTime = this.updateTime.bind(this);
     }
-
+    
     updateTime(e) {
         if(!this.props.updating) {
             return null;

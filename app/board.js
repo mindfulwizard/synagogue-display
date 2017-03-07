@@ -2,6 +2,7 @@ const React = require('react');
 const Entry = require('./entry')
 const Clock = require('./clock');
 const EditButton = require('./editButton');
+require("../css/board.css");
 
 class Board extends React.Component {
     constructor(props) {

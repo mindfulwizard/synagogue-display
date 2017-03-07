@@ -7,11 +7,21 @@ class Board extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            updating: false
+            updating: false,
+            times: this.get()
         };
         this.toggle = this.toggle.bind(this);
+        this.toSave = this.save.bind(this);
     }
-
+    save(title,time){
+        const times = this.get();
+        times[title] = time;
+        localStorage.setItem('times', JSON.stringify(times));
+        this.setState({times});
+    }
+    get(){
+        return JSON.parse(localStorage.getItem('times')) || {};
+    }
     toggle() {
         this.setState({
             updating: !this.state.updating
@@ -19,35 +29,18 @@ class Board extends React.Component {
     }
 
 	render() {
+        const times = this.state.times;
+        const {updating} = this.state;
         return (
             <div>
                 <Clock />
-                <Entry updating={this.state.updating} title="Shachris" />
-                <Entry updating={this.state.updating} title="Mincha" />
-                <Entry updating={this.state.updating} title="Maariv" />
-                <EditButton updating={this.state.updating} handleClick={this.toggle} />
+                <Entry updating={updating} save={this.toSave} title="Shachris">{times}</Entry>
+                <Entry updating={updating} save={this.toSave} title="Mincha">{times}</Entry>
+                <Entry updating={updating} save={this.toSave} title="Maariv">{times}</Entry>
+                <EditButton updating={updating} handleClick={this.toggle} />
             </div> 
         )
     }
 }
-
-/*function Board() {
-    let updating = localStorage.getItem('updating') || 'false';
-
-    function toggle() {
-        updating = localStorage.getItem('updating') === 'true' ? 'false' : 'true';
-        localStorage.setItem('updating', updating);
-    }
-
-    return (
-        <div>
-            <Clock />
-            <Entry updating={updating} title="Shachris" />
-            <Entry updating={updating} title="Mincha" />
-            <Entry updating={updating} title="Maariv" />
-            <EditButton updating={updating} handleClick={toggle} />
-        </div> 
-    )
-}*/
 
 module.exports = Board;

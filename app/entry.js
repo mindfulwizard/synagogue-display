@@ -22,7 +22,7 @@ class Entry extends React.Component {
     render(props) {
   	    return (
     	    <div className="entry">
-                <h2 className="inset">{this.props.title}: {!this.props.updating && this.state.time}
+                <h3 className="inset">{this.props.title}: {!this.props.updating && this.state.time}
                     {this.props.updating &&
                         <input 
                             type="text"
@@ -31,7 +31,7 @@ class Entry extends React.Component {
                             onChange={this.updateTime}
                         />
                     }
-                </h2>
+                </h3>
     	    </div>
  	    );
     }

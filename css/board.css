@@ -1,0 +1,11 @@
+body{
+	background-image: url('../assets/wood1.jpg');
+}
+.entry,.clock{
+	background: url('../assets/gold3.jpg');
+	width: 500px;
+    margin: 2rem auto;
+    padding: 3rem;
+    border-style: groove;
+    border-color: gold;
+}

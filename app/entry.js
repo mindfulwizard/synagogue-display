@@ -21,8 +21,8 @@ class Entry extends React.Component {
 
     render(props) {
   	    return (
-    	    <div>
-                <h2>{this.props.title}: {!this.props.updating && this.state.time}
+    	    <div className="entry">
+                <h2 className="inset">{this.props.title}: {!this.props.updating && this.state.time}
                     {this.props.updating &&
                         <input 
                             type="text"

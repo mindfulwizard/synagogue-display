@@ -4,12 +4,12 @@ const React = require('react');
 const Entry = ({title,updating,children,save})=> {
   	    return (
     	    <div>
-                <h2>{title}: 
+                <h2>{title}: <span></span>
                     {
                         updating ? (
                             <input 
                                 type="text"
-                                value={children[title]}
+                                value={children[title] || ''}
                                 placeholder="enter time"
                                 onChange={(e)=>save(title,e.target.value)}
                             />

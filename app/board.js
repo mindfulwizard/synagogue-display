@@ -29,8 +29,7 @@ class Board extends React.Component {
     }
 
 	render() {
-        const times = this.state.times;
-        const {updating} = this.state;
+        const {times, updating} = this.state;
         return (
             <div>
                 <Clock />
